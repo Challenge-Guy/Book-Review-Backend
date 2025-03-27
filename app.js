@@ -22,9 +22,9 @@ app.use(bodyParser.json());
 
 // cors を有効
 app.use(cors());
-app.options('*', cors());
+app.options('*', cors()); 
 
-app.use(express.static('uploads'));
+app.use(express.static('uploads')); 
 
 const httpSever = createServer(app);
 
