@@ -3,9 +3,9 @@ import fs from 'fs';
 
 //excelファイルからテキストを抽出する
 export const getTextFromExcel = async (filePath) => {
-  console.log('gettextfromExcel', filePath);
-  if (!fs.existsSync(filePath)) {
-    throw new Error(`File not found: ${filePath}`); 
+  console.log('gettextfromExcel', filePath); 
+  if (!fs.existsSync(filePath)) { 
+    throw new Error(`File not found: ${filePath}`);  
   }
   const buffer = fs.readFileSync(filePath); 
   console.log('buffer', buffer);
