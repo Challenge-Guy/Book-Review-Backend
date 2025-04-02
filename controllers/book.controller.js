@@ -30,8 +30,8 @@ export const deleteVectorData = async (req) => {
 export const uploadFile = async (file) => {
   const uploadPath = 'uploads'
   fs.mkdirSync(uploadPath, { recursive: true });
-  const filename = Date.now() + "-" + file.originalname;
-  const filePath = path.join(uploadPath, filename);
+  const filename = Date.now() + "-" + file.originalname; 
+  const filePath = path.join(uploadPath, filename); 
 
   fs.writeFile(filePath, file.buffer, async (err) => {
     if (err) {
@@ -40,9 +40,9 @@ export const uploadFile = async (file) => {
     file.path = filePath;
     file.filename = filename;
     try {
-      return await embeddingPinecone(filePath);
+      return await embeddingPinecone(filePath);  
     } catch (error) {
-      console.error('Error in embedding data:', error);
+      console.error('Error in embedding data:', error); 
       throw new Error('Failed to embedding book data'); // Throw meaningful error
     }
   });
