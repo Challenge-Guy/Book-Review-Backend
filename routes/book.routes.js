@@ -10,23 +10,23 @@ const upload = multer({ storage: multer.memoryStorage() });
 router.post(
   '/recommendBook',
   catchAsync(async (req, res) => {
-    console.log('/api/book/recommendBook called -', req.body);  
-    res.status(200).json(await recommendBook(req));
+    console.log('/api/book/recommendBook called -', req.body);    
+    res.status(200).json(await recommendBook(req));  
   })
 );
 
 //pineconeにデータアップロード
 router.post('/upload', upload.single('file'), 
-  catchAsync(async (req, res) => {
-    res.status(200).json(await uploadFile(req.file)) 
-  })
+  catchAsync(async (req, res) => {  
+    res.status(200).json(await uploadFile(req.file))   
+  })  
 );
 
 //pineconeでデータ削除
-router.delete('/deleteData',
+router.delete('/deleteData',  
   catchAsync(async (req, res) => {
-    res.status(200).json(await deleteVectorData(req))
-  })
+    res.status(200).json(await deleteVectorData(req))  
+  })  
 )
 
 export default router;
