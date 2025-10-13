@@ -94,10 +94,9 @@ export const embeddingPinecone = async (filePath) => {
  */
 
 //pineconeでデータ削除
-export const removePineconeData = async (del_flag) => {
+export const removePineconeData = async (del_flag) => { 
   try {
     console.log('accept delete request');
-
     const { index } = await initPinecone();
     // await index.delete({
     //   deleteAll: true,
@@ -123,12 +122,7 @@ const isJSON = (str) => {
 //本のおすすめ結果
 export const getRecommendBook = async (question) => {
   // OpenAI recommends replacing newlines with spaces for best results
-  console.log('qurestion', question);
-
   const sanitizedQuestion = question.trim().replaceAll('\n', ' ');
-
-  console.log('sanitizedQA', sanitizedQuestion);
-
   try {
     const { index } = await initPinecone();
 
@@ -141,7 +135,6 @@ export const getRecommendBook = async (question) => {
     
     // Get suitable docs
     let suitableDocs = await vectorStore.similaritySearch(sanitizedQuestion);
-    console.log('suitableDocs is : ', suitableDocs);
     const chat_model = new ChatOpenAI({
       openAIApiKey: process.env.OPENAI_API_KEY,
       temperature: 1,
